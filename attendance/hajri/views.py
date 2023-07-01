@@ -1,6 +1,8 @@
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from . import forms
+from datetime import date
+import calendar
 # Create your views here.
 
 
@@ -26,4 +28,9 @@ def form1(request):
         formset.save()
         return redirect('/hajri/form1')
     myform = forms.date_personForm
-    return render(request , 'form.html' , { "myform" : myform })
+    date_of_sabha = date.today().strftime("%m/%d/%Y ")
+    week_day_of_sabha = calendar.day_name[date.today().weekday()]
+    today_date = date_of_sabha + " | " + week_day_of_sabha
+    return render(request , 'form_hajri.html' , { 
+        "myform" : myform , 
+        "today_date" : today_date })
