@@ -3,17 +3,19 @@ from django.db import models
 
 class Person(models.Model):
     p_id = models.AutoField(primary_key = True)
-    family_id = models.IntegerField(default=0)
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    full_name = models.CharField(max_length=50)
-    gender =  models.BooleanField(default = True)
-    gender_text = models.CharField(max_length=10 , default="male")
-    age = models.IntegerField()
-    address = models.CharField(max_length=200)
+    full_name = models.CharField(max_length=50 , null = True)
+    gender =  models.CharField(max_length=10 , null = True)
+    address_society = models.CharField(max_length=100 , null= True)
+    address_house_no = models.CharField(max_length=100 , null= True)
+    mobile_no = models.CharField(max_length =15 , null=True)
+    whatsapp_no = models.CharField(max_length=15 , null = True)
+    old_karyakar = models.CharField(max_length=100 , null= True)
+    karykar = models.CharField(max_length=100 , null= True)
+    # family_id = models.IntegerField(default=0)
+    # age = models.IntegerField(null=True)
 
     def __str__(self):
-        return str(self.p_id) +"   ---   "+ self.first_name
+        return str(self.p_id) +"   ---   "+ self.full_name
 
 class date_person(models.Model):
     date_sabha = models.DateField(auto_now_add=True)
