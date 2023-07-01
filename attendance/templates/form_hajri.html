@@ -9,8 +9,9 @@
 
 </head>
 <body class="container-fluid justify-content-center">
-    <h1 class="row col-3 mx-auto my-5"> Sabha Attendance</h1>
-    <form method="post"  class="row col-9 mx-auto">
+    <h1 class="row col-6 mx-auto my-5"> Sabha Attendance</h1>
+    <h2 class="row col-6 mx-auto my-4"> Sabha Date : {{ today_date }}</h2>
+    <form method="post"  class="row col-6 mx-auto">
         {% csrf_token %}
         {{ myform }}
 
