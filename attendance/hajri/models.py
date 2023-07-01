@@ -15,7 +15,7 @@ class Person(models.Model):
     # age = models.IntegerField(null=True)
 
     def __str__(self):
-        return str(self.p_id) +"   ---   "+ self.full_name
+        return str(self.p_id) +" - "+ self.full_name + " - " + self.mobile_no
 
 class date_person(models.Model):
     date_sabha = models.DateField(auto_now_add=True)
