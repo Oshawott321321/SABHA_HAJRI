@@ -20,7 +20,7 @@ class Person(models.Model):
 class date_person(models.Model):
     date_sabha = models.DateField(auto_now_add=True)
     # date_sabha.editable=True
-    ref_id = models.ForeignKey("hajri.Person",on_delete=models.DO_NOTHING)
+    # ref_id = models.ForeignKey("hajri.Person",on_delete=models.DO_NOTHING)
 
 class Family(models.Model):
     family_id = models.IntegerField(primary_key=True)
@@ -28,4 +28,15 @@ class Family(models.Model):
     family_head = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     details = models.JSONField()
-    
+    male_person = models.SmallIntegerField(default=0)
+    female_person = models.SmallIntegerField(default=0)
+
+    def __str__(self) -> str:
+        return str(self.family_id) + " -- " + self.family_head
+
+
+class Sabha_attendance_entry(models.Model):
+    date_of_sabha = models.DateField(auto_now_add=True)
+    family_ref = models.ForeignKey("attendance.family",on_delete=models.DO_NOTHING)
+    male_attended = models.SmallIntegerField(default=0)
+    female_attended = models.SmallIntegerField(default=0)
