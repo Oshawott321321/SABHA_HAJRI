@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap/bootstrap.min.css') }}" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+
+    <style>
+        body {
+            color: black;
+            margin: 0;
+            padding: 0;
+            background : url('/static/images/BAPS_HOME.jpg') no-repeat center center fixed;
+            -webkit-background-size : cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+    {% block head %}
+
+    <title>Jay Swaminarayan</title>
+
+    {% endblock %}
+
+</head>
+
+
+<body>
+    <div class="container-fluid">
+
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <script src="{{ url_for('static',filename='js/bootstrap/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/base.js') }}"></script>
+</body>
+
+</html>
