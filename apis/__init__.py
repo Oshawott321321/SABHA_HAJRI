@@ -1,10 +1,10 @@
 from flask_restx import Api
 
 from .home    import api as route1
-from .routes2 import api as route2
+from .PersonRoutes import api as route2
 
 
-all_routes = Api()
+all_routes = Api(doc="/tmp")
 
-all_routes.add_namespace(route1)
-all_routes.add_namespace(route2)
+all_routes.add_namespace(route1,path='')
+all_routes.add_namespace(route2,path='/data')

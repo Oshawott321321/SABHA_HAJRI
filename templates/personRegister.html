@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block head %}
+<title> Person Form</title>
+<style>
+    .list-group-item {
+        background-color: transparent;
+        border: transparent;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <h1>Jay Swaminarayan</h1>
+    <h1>Welcome to Home</h1>
+</div>
+
+<div class="row">
+
+    <form method="post" target="_top" >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input name='name' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3 form-check">
+            <label class="form-label">Roll No</label>
+            <input type="number" id="html" name="roll_no">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Record</button>
+      </form>
+</div>
+<script>
+    $(document).ready(function(){
+        $('form').on('submit',function(event){
+            event.preventDefault()
+            console.log($(this))
+            const data = new FormData(event.target);
+            console.log(data)
+            let form_data = { 'name':data.get('name'),'roll_no':data.get('roll_no')}
+            // console.log([...data.entries()]);
+            $.ajax({
+                method: "POST",
+                url: "/data/register",
+                data: form_data
+            })
+            .done(function (msg) {
+                console.log("Data Saved: " + msg);
+            });
+        })
+    })
+</script>
+{% endblock %}

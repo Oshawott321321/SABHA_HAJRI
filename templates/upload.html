@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block head %}
+<title> Person Form</title>
+<style>
+    .list-group-item {
+        background-color: transparent;
+        border: transparent;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <h1>Jay Swaminarayan</h1>
+    <h1>Welcome to Home</h1>
+</div>
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3 col-2">
+            <label for="exampleInputEmail1" class="form-label">File</label>
+            <input name='attachment' type="file" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+{% endblock %}

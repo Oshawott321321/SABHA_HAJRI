@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Form</title>
+<style>
+    .list-group-item {
+        background-color: transparent;
+        border: transparent;
+    }
+    body{
+        background: none !important; 
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row my-1">
+    <div class="col-12 align-content-center">
+        <h2 class="col">SABHA DATE : {{ date }}</h2>
+        <div class="col input-group my-2">
+            <input id="nameSearch" type="text" class="form-control" placeholder="Name" aria-label="Name"
+                aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn" id="searchButton">Search</button>
+                <button class="btn" id="clearInputBox">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Fill</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr data-name="{{ item.name|lower }}" data-title="   {{ item.id }} - {{ item.name }}">
+                    <td class="col">{{ item.id }}</th>
+                    <td class="col name">{{ item.name }}</td>
+                    <td class="col">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" data-male="{{ item.male }}" data-female="{{ item.female }}"
+                            data-id="{{ item.id }}">
+                            fill Data
+                        </button>
+                    </td>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="attendance_modal">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row my-3">
+                        <label class="col">Male </label>
+                        <button class="col increment btn btn-info mx-5">+</button>
+                        <input class="col form-control numberInput" id="numberInputMale" type="number" min="0">
+                        <button class="col decrement btn btn-info mx-5">-</button>
+                    </div>
+                    <div class="row my-3">
+                        <label class="col">FM</label>
+                        <button class="col increment btn btn-info mx-5">+</button>
+                        <input class="col form-control numberInput" id="numberInputFemale" type="number" min="0">
+                        <button class="col decrement btn btn-info mx-5">-</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="close-attendance"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="fill-attendance">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static',filename='js/form.js')}}"></script>
+{% endblock %}
